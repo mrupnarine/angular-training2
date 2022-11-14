@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ContentChild, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-server-element',
@@ -10,6 +10,8 @@ export class ServerElementComponent implements OnInit, OnChanges {
  @Input('srvElement') element: {type: string, name: string, content: string};
  @Input() name:string;
 @ViewChild('heading', {static:true}) header: ElementRef;
+@ContentChild('contentParagraph') paragraph:ElementRef;
+
   constructor() {
     console.log('constructor called');
    }
@@ -21,6 +23,7 @@ export class ServerElementComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     console.log('ngOnInit called!');
     console.log('Text Content: ' + this.header.nativeElement.textContent);
+    console.log('Text Content of paragraph: ' + this.paragraph.nativeElement.textContent);
   }
 
   ngDoCheck() {
@@ -31,6 +34,7 @@ export class ServerElementComponent implements OnInit, OnChanges {
  } 
  ngAfterContentChecked(){
   console.log('ngAfterContentChecked called!');
+  console.log('Text Content of paragraph: ' + this.paragraph.nativeElement.textContent);
  }
  ngAfterViewInit(){
   console.log('ngAfterViewInit Called');
