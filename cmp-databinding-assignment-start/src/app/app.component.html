@@ -14,4 +14,16 @@
       </ol>
     </div>
   </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-gamecontrol (newNumber)="handleNewNumber($event)"></app-gamecontrol>
+    </div>
+    <div class="col-xs-12" >
+      <app-evencontrol *ngFor="let i of evenCount" [newNumber]="i"></app-evencontrol>
+      
+  </div>
+  <div class="col-xs-12" >
+    <app-oddcontrol *ngFor="let i of oddCount" [newNumber]="i"></app-oddcontrol>
+  </div>
+  </div>
 </div>
